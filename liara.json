@@ -1,4 +1,15 @@
 {
     "platform": "laravel",
-    "app": "laravel-starter"
+    "app": "laravel-starter",
+    "laravel": {
+        "routeCache": true,
+        "configCache": true,
+        "buildAssets": true
+    },
+    "disks": [
+        {
+            "name": "disk1",
+            "mountTo": "storage"
+        }
+    ]
 }
