@@ -4,7 +4,10 @@
     "laravel": {
         "routeCache": true,
         "configCache": true,
-        "buildAssets": true
+        "buildAssets": true,
+        "postBuildCommands": [
+            "echo 'This is a postBuildCommands!'"
+        ]
     },
     "disks": [
         {
