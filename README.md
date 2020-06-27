@@ -13,6 +13,8 @@ Make sure you have [PHP](https://www.php.net/) and [Composer](https://getcompose
 git clone https://github.com/liara-cloud/laravel-getting-started
 cd laravel-getting-started
 composer install
+cp .env.example .env
+php artisan key:generate
 php artisan serve
 ```
 
