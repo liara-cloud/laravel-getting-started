@@ -1,20 +1,25 @@
-# Laravel getting started
+# Laravel apps getting started
 
-Example of how running Laravel projects on Liara.
+Example of how deploy a simple Laravel project on [liara](https://liara.ir).
 
-Read more on Liara docs: https://docs.liara.ir/app-deploy/laravel/getting-started
+## Deploying
 
+[Create New Laravel App](https://console.liara.ir/apps/create) & install the [Liara CLI](https://docs.liara.ir/cli/install)
 
-## Running Locally
+```bash
+$ git clone https://github.com/liara-cloud/laravel-getting-started # or clone your own fork
 
-Make sure you have [PHP](https://www.php.net/) and [Composer](https://getcomposer.org/)
+$ cd laravel-getting-started
 
-```sh
-git clone https://github.com/liara-cloud/laravel-getting-started
-cd laravel-getting-started
-composer install
-cp .env.example .env
-php artisan key:generate
-php artisan serve
+$ liara deploy
 ```
+## Availabe Branches
 
+1.  [Adding liara.json file](https://github.com/liara-cloud/laravel-getting-started/tree/liaraJson)
+2.  [Adding HTTPS configuration](https://github.com/liara-cloud/laravel-getting-started/tree/httpsConfig)
+3.  [Disk setup](https://github.com/liara-cloud/laravel-getting-started/tree/diskSetup)
+4.  [php.ini customization](https://github.com/liara-cloud/laravel-getting-started/tree/phpini)
+
+
+## Documentation
+Read more on liara [Laravel apps documentation](https://docs.liara.ir/app-deploy/laravel/getting-started)

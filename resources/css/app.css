@@ -1,6 +1,6 @@
 @font-face {
     font-family: BeautifulPeople;
-    src: url(/fonts/BeautifulPeople.ttf?17efd45acf38dcea2253021678ec389f);
+    src: url('BeautifulPeople.ttf');
 }
 
 body {
