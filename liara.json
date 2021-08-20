@@ -1,3 +1,9 @@
 {
-    "platform": "laravel"
+    "platform": "laravel",
+    "disks": [
+        {
+            "name": "disk",
+            "mountTo": "storage"
+        }
+    ]
 }
