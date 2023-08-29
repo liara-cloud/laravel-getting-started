@@ -5,5 +5,9 @@
             "name": "disk",
             "mountTo": "storage"
         }
-    ]
+    ],
+    "app": "laravel-sample",
+    "laravel": {
+        "phpVersion": "8.0"
+    }
 }
