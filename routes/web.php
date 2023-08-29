@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FileUpload;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/upload', [FileUpload::class, 'showForm']);
+Route::post('/upload', [FileUpload::class, 'uploadFile'])->name('uploadFile');
+
+Route::get('files/{file}', function ($file = null) {
+    $path = storage_path() . '/' . 'app' . '/public/uploads/' . $file;
+    if (file_exists($path))
+        return response()->download($path);
 });
