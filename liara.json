@@ -1,0 +1,17 @@
+{
+    "disks": [
+        {
+            "name": "storage",
+            "mountTo": "storage"
+        },
+        {
+            "name": "public",
+            "mountTo": "public"
+        },
+        {
+           "name": "live",
+           "mountTo": "livewire-tmp" 
+        }
+
+    ]
+}
