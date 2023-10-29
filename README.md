@@ -5,7 +5,7 @@
 - ```cp .env.example .env ```
 - ```composer update --ignore-platform-reqs``` 
 - Set up Database configuration inside .env file.
-- ```php artisan setup``` or ```php artisan migrate --seed```
+- ```php artisan migrate --seed```
 - Install all dependencies via `npm` and Compile all assets based on your deployment environment. 
 
 ```bash
@@ -13,10 +13,10 @@
 npm install
 
 #Development
-npm dev
+npm run dev
 
 #Production
-npm prod
+npm run prod
 ```
 
 - Create symbolic link 
@@ -37,4 +37,4 @@ You may use these credentials to log into your website. you can change these cre
 **Password** : password
 
 ## License
-[MIT](LICENSE) © Albin Varghese
+(LICENSE) © Albin Varghese
