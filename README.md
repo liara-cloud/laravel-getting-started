@@ -1,11 +1,23 @@
 ## Installation
 
-- ```git clone https://github.com/liara-cloud/laravel-getting-started.git```
-- ```cd laravel-getting-started```
-- ```cp .env.example .env ```
-- ```composer update --ignore-platform-reqs``` 
+```bash
+git clone https://github.com/liara-cloud/laravel-getting-started.git
+```
+
+ ```bash
+ cd laravel-getting-started
+ ```
+
+ ```bash
+cp .env.example .env
+ ```
+ ```bash
+ composer update --ignore-platform-reqs
+ ``` 
 - Set up Database configuration inside .env file.
-- ```php artisan migrate --seed```
+```bash
+php artisan migrate --seed
+```
 - Install all dependencies via `npm` and Compile all assets based on your deployment environment. 
 
 ```bash
@@ -20,12 +32,13 @@ npm run prod
 ```
 
 - Create symbolic link 
-```
+
+```bash
 php artisan storage:link
 ```
 
 - Start the local server using the command
-```
+```bash
 php artisan serve
 ```
 
@@ -36,5 +49,5 @@ You may use these credentials to log into your website. you can change these cre
 **Email** : admin@gmail.com<br>
 **Password** : password
 
-## License
-(LICENSE) © Albin Varghese
+## first look of this social media
+<img src="https://files.liara.ir/liara/laravel/cource/first-look-of-social-media-laravel.png" alt="Alt text" title="Optional title">
