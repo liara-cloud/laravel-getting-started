@@ -7,36 +7,52 @@ use Illuminate\Support\Facades\Storage;
 
 class S3Controller extends Controller
 {
-    public function upload_file()
+    public function showUserInterface()
     {
-        Storage::disk('liara')->put('example.txt', 'Hi I am Using Liara');
-        echo "file uploaded successfully";
+        return view('userinterface');
     }
 
-    public function retrieve_file()
+    public function uploadFile(Request $request)
     {
-        $contents = Storage::disk('liara')->get('example.txt');
-        // $contents = Storage::json('example.json'); // if you have json
-        echo "file retrieved successfully: ";
-        echo $contents;
+        $request->validate([
+            'upload_file' => 'required|max:2048', // Adjust the file size validation as needed
+        ]);
+
+        $file = $request->file('upload_file');
+        $fileName = $file->getClientOriginalName();
+
+        Storage::disk('liara')->put($fileName, file_get_contents($file));
+
+        return redirect()->route('user.interface')->with('success', 'File uploaded successfully');
+    }
+
+    public function showObjects()
+    {
+        $objects = Storage::disk('liara')->allFiles('');
+    
+        $files = [];
+        foreach ($objects as $object) {
+            $files[] = [
+                'name' => $object,
+                'download_link' => Storage::disk('liara')->temporaryUrl($object, now()->addMinutes(5)),
+            ];
+        }
+    
+        return view('userinterface', ['files' => $files]);
+    }
+    
+
+    public function downloadFile(Request $request)
+    {
+        $fileName = $request->input('download_file');
+        return Storage::disk('liara')->download($fileName);
+    }
+
+    public function deleteFile(Request $request)
+    {
+        $fileName = $request->input('delete_file');
+        Storage::disk('liara')->delete($fileName);
         
-    }
-
-    public function download_file()
-    {
-        return Storage::disk('liara')->download('liara-poster.png');
-        echo "file downloaded successfully";
-    }
-
-    public function list_files()
-    {
-        $files = Storage::disk('liara')->Files("/");
-        print_r($files);
-    }
-
-    public function delete_file()
-    {
-        Storage::disk('liara')->delete('example.txt');
-        echo "file deleted successfully";
+        return redirect()->route('user.interface')->with('success', 'File deleted successfully');
     }
 }

@@ -15,12 +15,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\S3Controller;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('userinterface');
 });
 
-Route::get('/upload-file'  ,   [S3Controller::class, 'upload_file']  );
-Route::get('/retrieve-file',   [S3Controller::class, 'retrieve_file']);
-Route::get('/download-file',   [S3Controller::class, 'download_file']);
-Route::get('/list-files'   ,   [S3Controller::class, 'list_files']   );
-Route::get('/delete-file'  ,   [S3Controller::class, 'delete_file']  );
+Route::get('/userinterface', function () {
+    return view('userinterface');
+});
 
+Route::get('/userinterface', [S3Controller::class, 'showUserInterface'])->name('user.interface');
+Route::post('/upload-file', [S3Controller::class, 'uploadFile'])->name('upload.file');
+Route::post('/show-objects', [S3Controller::class, 'showObjects'])->name('show.objects');
+Route::post('/retrieve-file', [S3Controller::class, 'retrieveFile'])->name('retrieve.file');
+Route::post('/delete-file', [S3Controller::class, 'deleteFile'])->name('delete.file');
+Route::post('/download-file', [S3Controller::class, 'downloadFile'])->name('download.file');
