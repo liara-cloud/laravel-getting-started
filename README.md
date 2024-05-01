@@ -1,39 +1,35 @@
-Laravel + soketi = <3
-=====================
+# ChatApp using Soketi in Laravel
+## Installation (Local)
 
-
-A small Laravel Chat app demo for soketi. 📡
-
-## Installing the project
-
-The server requires:
-
-- Composer
-- Node.js + NPM (for soketi)
-- PHP 8.0+
-
-```bash
-git 
+- create a [soketi one-click-app](https://console.liara.ir/apps/create?initialTab=one-click-apps) on Liara
 ```
-
-```bash
-cd laravel-chat-app
+git clone https://github.com/liara-cloud/laravel-getting-started.git
 ```
-
-## Installing the chat room app
-
-Run the following chain commands to install the project:
-
-```bash
-composer install --ignore-platform-reqs && \
-cp .env.example .env && \
-touch database/database.sqlite && \
-php artisan key:generate && \
-php artisan migrate:fresh --seed && \
+```
+cd laravel-getting-started
+```
+```
+git checkout soketi
+```
+```
+composer install --ignore-platform-reqs
+```
+```
+cp .env.example .env # rename .env.example to .env in Windows
+```
+```
+touch database/database.sqlite # create database/database.sqlite in Windows
+```
+```
+php artisan key:generate
+```
+```
+php artisan migrate:fresh --seed
+```
+```
 php artisan storage:link
 ```
-
-Open your `.env` file and configure the `PUSHER_*` credentials (which can be the same as the default ones below):
+- open your `.env` file and configure the `PUSHER_*` credentials:
 
 ```
 PUSHER_APP_KEY=app-key
@@ -41,39 +37,34 @@ PUSHER_APP_ID=app-id
 PUSHER_APP_SECRET=app-secret
 PUSHER_HOST=127.0.0.1
 PUSHER_PORT=6001
-
-MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
-MIX_PUSHER_HOST="${PUSHER_HOST}"
-MIX_PUSHER_PORT="${PUSHER_PORT}"
 ```
-
-Build the frontend assets:
-
-```bash
+- set pusher envs in resources/js/bootstrap.js directly with no https
+```
 npm install && npm run dev
 ```
-
-Run the internal server to make the HTTP server accessible on `http://127.0.0.1:8000`:
-
-```bash
+```
 php artisan serve
 ```
 
-## Installing soketi
-
-You can find multiple [installation methods](https://rennokki.gitbook.io/soketi-docs/getting-started/installation) for soketi, but for this project we assume you already have NPM installed:
-
-```bash
-npm install -g @soketi/soketi@latest
+## Installation (Liara)
+- create a [soketi one-click-app](https://console.liara.ir/apps/create?initialTab=one-click-apps) on Liara
+- create a [laravel app](https://console.liara.ir/apps/create) on Liara
+```
+git clone https://github.com/liara-cloud/laravel-getting-started.git
+```
+```
+cd laravel-getting-started
+```
+```
+git checkout soketi
+```
+- set pusher envs in resources/js/bootstrap.js directly with no https
+- add envs to app on Liara
+```
+liara deploy
 ```
 
-To launch the server, open a new terminal window and let it run in the background:
-
-```bash
-soketi start
-```
-
-## Authentication
+### Authentication
 
 The seeders created three accounts. All accounts can be accessed with the password `password`:
 
@@ -81,16 +72,4 @@ The seeders created three accounts. All accounts can be accessed with the passwo
 - `test2@test.com`
 - `test3@test.com`
 
-## Linting the code
 
-You can lint the code for Vue:
-
-```bash
-npm run lint
-```
-
-For PHP, use the CSFixer command:
-
-```bash
-vendor/bin/php-cs-fixer fix
-```
