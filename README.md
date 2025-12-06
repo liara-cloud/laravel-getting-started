@@ -16,6 +16,15 @@ composer install
 mv .env.example .env # and set ENVs
 ```
 ```
+php artisan key:generate
+```
+```
+touch database/database.sqlite
+```
+```
+php artisan migrate
+```
+```
 php artisan serve
 ```
 - check `http://127.0.0.1:8000/send-test-email` to send email
