@@ -377,7 +377,6 @@
         </div>
     </div>
 
-    <!-- URL Modal -->
     <div id="urlModal" class="url-modal hidden">
         <div class="url-modal-content">
             <div class="url-modal-header" id="urlModalTitle">File URL</div>
@@ -390,10 +389,8 @@
     </div>
 
     <script>
-        // CSRF token setup
         const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
-        // Alert functions
         function showAlert(message, type = 'success') {
             const alertContainer = document.getElementById('alertContainer');
             const alert = document.createElement('div');
@@ -406,7 +403,6 @@
             }, 5000);
         }
 
-        // File upload handling
         const fileInput = document.getElementById('fileInput');
         const uploadArea = document.getElementById('uploadArea');
         const uploadForm = document.getElementById('uploadForm');
@@ -417,7 +413,6 @@
             }
         });
 
-        // Drag and drop
         uploadArea.addEventListener('dragover', function(e) {
             e.preventDefault();
             this.classList.add('dragover');
@@ -437,7 +432,6 @@
             }
         });
 
-        // Upload file function
         async function uploadFile(file) {
             const formData = new FormData();
             formData.append('file', file);
@@ -464,12 +458,10 @@
             }
         }
 
-        // Download file function
         function downloadFile(filename) {
             window.location.href = `/download/${encodeURIComponent(filename)}`;
         }
 
-        // Delete file function
         async function deleteFile(filename) {
             if (!confirm('Are you sure you want to delete this file?')) {
                 return;
@@ -489,13 +481,11 @@
                 if (data.success) {
                     showAlert('File deleted successfully!', 'success');
                     
-                    // Remove the file card from the DOM
                     const fileCard = document.querySelector(`[data-filename="${filename}"]`);
                     if (fileCard) {
                         fileCard.remove();
                     }
                     
-                    // Update file count
                     setTimeout(() => location.reload(), 1500);
                 } else {
                     showAlert(data.message, 'error');
@@ -505,7 +495,6 @@
             }
         }
 
-        // Get temporary URL (1 hour)
         async function getTempUrl(filename) {
             try {
                 const response = await fetch(`/temp-url/${encodeURIComponent(filename)}`);
@@ -521,7 +510,6 @@
             }
         }
 
-        // Get permanent URL
         async function getPermanentUrl(filename) {
             try {
                 const response = await fetch(`/permanent-url/${encodeURIComponent(filename)}`);
@@ -537,7 +525,6 @@
             }
         }
 
-        // Show URL modal
         function showUrlModal(title, url) {
             document.getElementById('urlModalTitle').textContent = title;
             document.getElementById('urlDisplay').textContent = url;
@@ -545,12 +532,10 @@
             window.currentUrl = url;
         }
 
-        // Close URL modal
         function closeUrlModal() {
             document.getElementById('urlModal').classList.add('hidden');
         }
 
-        // Copy URL to clipboard
         function copyUrl() {
             const url = window.currentUrl;
             navigator.clipboard.writeText(url).then(() => {
@@ -561,7 +546,6 @@
             });
         }
 
-        // Close modal on background click
         document.getElementById('urlModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeUrlModal();
